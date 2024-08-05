@@ -46,7 +46,7 @@ def caracteres_iguais(valor):
             return False
     return True
 
-print('Bem vindo ao formnatador de planilhas versão 1.0.0')
+print('Bem vindo ao formatador de planilhas versão 1.0.0')
       
 while True:
     opcao_criar_alterar = input('Voce deseja [C]riar uma nova planilha com seus dados ou [A]lterar sua antiga com eles? ')
