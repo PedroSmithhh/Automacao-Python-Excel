@@ -3,10 +3,10 @@ import re
 import os
 
 # Carrega o excel
-excel = open.load_workbook(r"Caminho_Arquivo") # Coloque o caminho em que seu documento excel se encontra no seu computador dentro dos parenteses
+excel = open.load_workbook(r"C:\Users\pirsp\Downloads\vendas_e_nf-e_278494024215527.xlsx") # Coloque o caminho em que seu documento excel se encontra no seu computador dentro dos parenteses
 
 # Nome da planilha
-planilha = excel['Nome_Planilha'] # Escreva aqui o nome da planilha que voce quer manipular
+planilha = excel['Worksheet'] # Escreva aqui o nome da planilha que voce quer manipular
 
 def limpar_celula(valor):
     if isinstance(valor, str):
@@ -15,7 +15,7 @@ def limpar_celula(valor):
 
 
 def tira_55(valor):
-    if valor.startswith('55'):
+    if valor.startswith('+55') or (valor.startswith('55') and len(valor) > 11): # Verifica se começa com +55 e se este não é o ddd do numero
         return valor[2:]
     return valor
 
@@ -101,11 +101,11 @@ for linha in reversed(linha_errada):
 
 if opcao_criar_alterar.lower() == 'c':
     # Cria uma nova planilha com as alterações
-    excel.save(r"Nome_Arquivo/Novo_nome") # Coloque o caminho onde voce deseja salvar seu novo arquivo junto com seu novo nome
+    excel.save(r"C:\Users\pirsp\Downloads\vendas_e_nf-e_278494024215527_Arrumada.xlsx") # Coloque o caminho onde voce deseja salvar seu novo arquivo junto com seu novo nome
 
 if opcao_criar_alterar.lower() == 'a':
     # Altera a planilha manipulada com os novos dados
-    excel.save(r"Caminho_Arquivo") # Coloque o caminho do arquivo que voce esta usando
+    excel.save(r"C:\Users\pirsp\Downloads\Leads 31 mil.xlsx") # Coloque o caminho do arquivo que voce esta usando
 
 os.system('cls')
 print('Suas informações foram processadas com sucesso')
