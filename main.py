@@ -3,10 +3,10 @@ import re
 import os
 
 # Carrega o excel
-excel = open.load_workbook(r"C:\Users\pirsp\Downloads\vendas_e_nf-e_278494024215527.xlsx") # Coloque o caminho em que seu documento excel se encontra no seu computador dentro dos parenteses
+excel = open.load_workbook("Caminho_do_arquivo") # Coloque o caminho em que seu documento excel se encontra no seu computador dentro dos parenteses
 
 # Nome da planilha
-planilha = excel['Worksheet'] # Escreva aqui o nome da planilha que voce quer manipular
+planilha = excel['Nome_da_Planilha'] # Escreva aqui o nome da planilha que voce quer manipular
 
 def limpar_celula(valor):
     if isinstance(valor, str):
@@ -101,11 +101,11 @@ for linha in reversed(linha_errada):
 
 if opcao_criar_alterar.lower() == 'c':
     # Cria uma nova planilha com as alterações
-    excel.save(r"C:\Users\pirsp\Downloads\vendas_e_nf-e_278494024215527_Arrumada.xlsx") # Coloque o caminho onde voce deseja salvar seu novo arquivo junto com seu novo nome
+    excel.save("Caminho_do_Arquivo + /Nome_Novo_Arquivo") # Coloque o caminho onde voce deseja salvar seu novo arquivo junto com seu novo nome
 
 if opcao_criar_alterar.lower() == 'a':
     # Altera a planilha manipulada com os novos dados
-    excel.save(r"C:\Users\pirsp\Downloads\Leads 31 mil.xlsx") # Coloque o caminho do arquivo que voce esta usando
+    excel.save("Caminho_do_Arquivo") # Coloque o caminho do arquivo que voce esta usando
 
 os.system('cls')
 print('Suas informações foram processadas com sucesso')
