@@ -3,3 +3,5 @@ Assim, é necessario que o usuario preencha o codigo com as informações necece
 Seu funcionamente exige que a coluna de telefones tenha como cabeçalho a palavra 'telefone' ou 'Telefone" para funcionar corretamente.
 
 É necessario ter o python instalado assim como a biblioteca openpyxl instalada para o funcionamento do codigo
+
+Obs: Alguns modulos foram cirados para lidar com eventuais particularidades, como converter arquivos txt's para xlsx
