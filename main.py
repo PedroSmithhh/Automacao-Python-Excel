@@ -1,13 +1,20 @@
 import openpyxl as open
 import re
 import os
+from pathlib import Path
+
+# Caminho absoluto do diretório do arquivo atual
+root_path = root_path = Path(__file__).parent
+data_path = root_path / "data"
+csv_path = data_path / "MATRIZ_Qualificada.xlsx"
 
 # Carrega o excel
-excel = open.load_workbook(r"C:\Users\pirsp\Downloads\Contatos Dilso Whats Lista Maior.xlsx") # Coloque o caminho em que seu documento excel se encontra no seu computador dentro dos parenteses
+excel = open.load_workbook(csv_path) # Coloque o caminho em que seu documento excel se encontra no seu computador dentro dos parenteses
 
 # Nome da planilha
-planilha = excel['Exportação'] # Escreva aqui o nome da planilha que voce quer manipular
+planilha = excel['MATRIZ'] # Escreva aqui o nome da planilha que voce quer manipular
 
+# Remover todos os caracteres não numéricos
 def limpar_celula(valor):
     if isinstance(valor, str):
         return re.sub(r'\D', '', valor)
@@ -57,10 +64,10 @@ while True:
         os.system('cls')
         print('Por favor digite um valor valido (A -> Alterar | C -> Criar)')
 
-# Encontrar a coluna com o cabeçalho 'Telefone'
+# Encontrar a coluna com o cabeçalho especifico (trocar de acordo com necessidade)
 coluna_telefone = None
 for celula in planilha[1]: # Como se trata de cabeçalho, assume-se que este se encontra na primeira linha
-    if celula.value == 'Telefone' or celula.value == 'telefone':
+    if celula.value == 'LEADS' or celula.value == 'leads' or celula.value == 'Leads':
         coluna_telefone = celula.column
         break
 
@@ -101,11 +108,12 @@ for linha in reversed(linha_errada):
 
 if opcao_criar_alterar.lower() == 'c':
     # Cria uma nova planilha com as alterações
-    excel.save(r"C:\Users\pirsp\Downloads\Dilso_novo.xlsx") # Coloque o caminho onde voce deseja salvar seu novo arquivo junto com seu novo nome
+    nome_arquivo = input("Digite o nome do novo arquivo.xslx: ")
+    excel.save(data_path / nome_arquivo) # Coloque o caminho onde voce deseja salvar seu novo arquivo junto com seu novo nome
 
 if opcao_criar_alterar.lower() == 'a':
     # Altera a planilha manipulada com os novos dados
-    excel.save("Caminho_do_Arquivo") # Coloque o caminho do arquivo que voce esta usando
+    excel.save(data_path) # Coloque o caminho do arquivo que voce esta usando
 
 os.system('cls')
 print('Suas informações foram processadas com sucesso')
